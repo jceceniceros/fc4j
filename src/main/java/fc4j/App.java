@@ -3,12 +3,36 @@
  */
 package fc4j;
 
+import facebook4j.Account;
+import facebook4j.Facebook;
+import facebook4j.FacebookException;
+import facebook4j.FacebookFactory;
+import facebook4j.ResponseList;
+import facebook4j.auth.AccessToken;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        Facebook facebook = new FacebookFactory().getInstance();
+        facebook.setOAuthAppId("", "");
+        facebook.setOAuthPermissions("");
+        facebook.setOAuthAccessToken(new AccessToken("", null));
+        ResponseList<Account> accounts = null;
+        try {
+            accounts = facebook.getAccounts();
+        } catch (FacebookException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(accounts);
+        /*
+        Account yourPageAccount = accounts.get(0);  // if index 0 is your page account.
+
+        System.out.println(yourPageAccount.getName());
+        */
     }
 }
