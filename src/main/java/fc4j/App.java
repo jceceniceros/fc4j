@@ -3,12 +3,10 @@
  */
 package fc4j;
 
-import facebook4j.Account;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import facebook4j.FacebookFactory;
-import facebook4j.ResponseList;
-import facebook4j.auth.AccessToken;
+import facebook4j.User;
 
 public class App {
     public String getGreeting() {
@@ -18,21 +16,14 @@ public class App {
     public static void main(String[] args) {
 
         Facebook facebook = new FacebookFactory().getInstance();
-        facebook.setOAuthAppId("", "");
-        facebook.setOAuthPermissions("");
-        facebook.setOAuthAccessToken(new AccessToken("", null));
-        ResponseList<Account> accounts = null;
+
+        User me = null;
         try {
-            accounts = facebook.getAccounts();
+            me = facebook.getMe();
         } catch (FacebookException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(accounts);
-        /*
-        Account yourPageAccount = accounts.get(0);  // if index 0 is your page account.
+        System.out.println(me);
 
-        System.out.println(yourPageAccount.getName());
-        */
     }
 }
