@@ -3,12 +3,17 @@
  */
 package fc4j;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import facebook4j.FacebookFactory;
 import facebook4j.User;
 
 public class App {
+    private static final Logger logger = LogManager.getLogger(App.class);
+
     public String getGreeting() {
         return "Hello world.";
     }
@@ -23,7 +28,10 @@ public class App {
         } catch (FacebookException e) {
             e.printStackTrace();
         }
-        System.out.println(me);
+
+        logger.error(me.getId());
+        logger.error(me.getName());
+        logger.error(me.getEmail();
 
     }
 }
