@@ -3,12 +3,27 @@
  */
 package fc4j;
 
+import facebook4j.Facebook;
+import facebook4j.FacebookException;
+import facebook4j.FacebookFactory;
+import facebook4j.User;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        Facebook facebook = new FacebookFactory().getInstance();
+
+        User me = null;
+        try {
+            me = facebook.getMe();
+        } catch (FacebookException e) {
+            e.printStackTrace();
+        }
+        System.out.println(me);
+
     }
 }
