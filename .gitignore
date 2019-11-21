@@ -63,5 +63,6 @@ gradle-app.setting
 .classpath
 .factorypath
 .project
+.vscode
 
 facebook4j.properties
